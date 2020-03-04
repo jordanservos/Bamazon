@@ -21,7 +21,7 @@ connection.connect(function(err) {
 
     showTable();
 
-    // connection.end();
+
 
 
 });
@@ -71,10 +71,30 @@ function createOrder(productID, quanRequested) {
         // console.table(res);
         if (quanRequested <= res[0].stock_quantity) {
             var cost = res[0].price * quanRequested;
+            var productName = res[0].product_name;
             // console.log(cost);
+            console.log("----------------------------")
+            console.log("Your requested order is available! Congrats...")
+            console.log("Your " + productName + " order total is " + "$" + cost.toFixed(2));
+            console.log("Thanks for the purchase!")
+            console.log("----------------------------")
+            connection.query('UPDATE products SET stock_quantity = stock_quantity - ' + quanRequested + " WHERE item_id = " + productID);
 
+            console.log("Stock quantity of item " + productName + " is now updated")
+            console.log("----------------------------")
+            connection.end();
+
+
+
+        } else {
+            console.log("----------------------------")
+            console.log("Insufficient quantity - we only have " + res[0].stock_quantity + " available")
+            console.log("----------------------------")
+            connection.end();
         }
 
     })
+
+
 
 }
