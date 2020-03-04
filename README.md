@@ -15,11 +15,10 @@ Bamazon also uses MySQL and Inquirer npm packages for data input and storage.
 ### Commands
 
 1. `node bamazoncustomer.js`
-    * This command searches executes the program
+    * This command executes the program
 
-    ![Execute](Screen Recording 2020-03-03 at 8.59.11 PM.mov)
+[Execute](Screen Recording 2020-03-03 at 8.59.11 PM.mov)
 
-    ![Example Concert Output](screenshots/example-concert-output.png)
 
 2. `node liri.js spotify-this-song <song-name>`
     * This command searches the Spotify Web API that runs on Node.js (`spotify.search({type: "track", query: userQuery}, function(err, data)`) and returns information about the song the user input. It includes `Artist: `, `Song Name: `, and `Preview Link: `, and `Album: `. If no artist is entered, the API automatically searches "The Sign" by Ace of Base for the user.
