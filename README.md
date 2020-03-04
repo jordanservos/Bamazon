@@ -5,26 +5,19 @@ In this activity, I created an Amazon-like storefront with the MySQL skills we l
 
 Bamazon also uses MySQL and Inquirer npm packages for data input and storage.
 
-![Log Output](screenshots/updating-log-txt.png)
-
 ## Built With/Installations Required
 
 * [Node.js] (https://nodejs.org/en/)
-* [Node-File-System] (https://nodejs.org/api/fs.html)
-* [Axios] (https://www.npmjs.com/package/axios)
-* [DotEnv] (https://www.npmjs.com/package/dotenv)
 * [JavaScript] (https://www.javascript.com/)
-* [Moment.js] (https://www.npmjs.com/package/moment)
-* [OMDB-API] (http://www.omdbapi.com)
-* [Bandsintown-API] (http://www.artists.bandsintown.com/bandsintown-api)
-* [Node-Spotify-API] (https://www.npmjs.com/package/node-spotify-api)
+* [MySQL npm package] (https://www.npmjs.com/package/mysql)
+* [Inquirer npm package] (https://www.npmjs.com/package/inquirer)
 
 ### Commands
 
-1. `node liri.js concert-this <artist/band-name>`
-    * This command searches the Bands in Town Artist Events API through Axios (`"https://rest.bandsintown.com/artists/" + userQuery + "/events?app_id=" + keys.bands.id`) and returns events the artist is appearing at in the near future. It includes `Venue Name: `, `Venue Location: `, and `Date of the Event: `. If no artist is entered, the API automatically searches Slayer for the user.
+1. `node bamazoncustomer.js`
+    * This command searches executes the program
 
-    ![Default Concert Output](screenshots/default-concert-this.png)
+    ![Execute](Screen Recording 2020-03-03 at 8.59.11 PM.mov)
 
     ![Example Concert Output](screenshots/example-concert-output.png)
 
