@@ -17,7 +17,7 @@ Bamazon also uses MySQL and Inquirer npm packages for data input and storage.
 1. `node bamazoncustomer.js`
     * This command executes the program
 
-![Execute](Screen Shot 2020-03-04 at 3.57.59 PM.png)
+![Execute](pics/Screen Shot 2020-03-04 at 3.57.59 PM.png)
 
 
 2. `node liri.js spotify-this-song <song-name>`
