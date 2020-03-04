@@ -19,17 +19,62 @@ connection.connect(function(err) {
     if (err) throw err;
     console.log("connected as id " + connection.threadId);
 
-    connection.end();
+    showTable();
+
+    // connection.end();
+
 
 });
 
-showTable()
+
 
 function showTable() {
     connection.query("SELECT * FROM products", function(err, res) {
         if (err) throw err;
         console.table(res);
+        userSelection(res);
 
 
     })
+};
+
+function userSelection() {
+    inquirer.prompt([
+
+        {
+            type: "input",
+            name: "choice",
+            message: "What is the ID # of the item are you interested in purchasing?",
+
+        },
+
+        {
+            type: "input",
+            name: "quantity",
+            message: "How many would like to purchase?"
+        },
+
+    ]).then(function(answers) {
+        var userQuantity = answers.quantity;
+        var idSelected = answers.choice;
+        // console.log(userQuantity, idSelected)
+        createOrder(idSelected, userQuantity);
+
+
+    });
+
+};
+
+function createOrder(productID, quanRequested) {
+    connection.query('SELECT * FROM products WHERE item_id = ' + productID, function(err, res) {
+        if (err) throw err;
+        // console.table(res);
+        if (quanRequested <= res[0].stock_quantity) {
+            var cost = res[0].price * quanRequested;
+            // console.log(cost);
+
+        }
+
+    })
+
 }
