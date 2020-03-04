@@ -11,6 +11,7 @@ Bamazon also uses MySQL and Inquirer npm packages for data input and storage.
 * [JavaScript] (https://www.javascript.com/)
 * [MySQL npm package] (https://www.npmjs.com/package/mysql)
 * [Inquirer npm package] (https://www.npmjs.com/package/inquirer)
+* [MySQL Database] (https://www.mysql.com/)
 
 ### Commands
 
@@ -20,26 +21,38 @@ Bamazon also uses MySQL and Inquirer npm packages for data input and storage.
 ![Execute](https://github.com/jordanservos/Bamazon/blob/master/pics/Screen%20Shot%202020-03-04%20at%203.57.59%20PM.png)
 
 
-2. `node liri.js spotify-this-song <song-name>`
-    * This command searches the Spotify Web API that runs on Node.js (`spotify.search({type: "track", query: userQuery}, function(err, data)`) and returns information about the song the user input. It includes `Artist: `, `Song Name: `, and `Preview Link: `, and `Album: `. If no artist is entered, the API automatically searches "The Sign" by Ace of Base for the user.
+2. `User Prompts`
+    * Once executed, the program will show a table with all available product selections. The user will be be prompted to entire the ID of the product they're interested in purchasing. A follow up prompt will ask how many they'd like to purchase. 
 
-    ![Default Song Output](screenshots/default-spotify-output.png)
+    ![Next](https://github.com/jordanservos/Bamazon/blob/master/pics/Screen%20Shot%202020-03-04%20at%203.59.01%20PM.png)
 
-    ![Example Song Output](screenshots/example-song-output.png)
 
-3. `node liri.js movie-this <movie-name>`
-    * This command searches the OMDB API through Axios (`"http://www.omdbapi.com/?t=" + userQuery + "&y=&plot=short&apikey=" + keys.movies.id`) and returns information about the movie the user input. It includes `Title: `, `Year Released: `, `IMDB Rating: `, `Rotten Tomatoes Rating: `, `Country/Countries Produced: `, `Language: `, `Plot: `, and `Cast: `. If no movie is entered, the API automatically searches Mr. Nobody for the user, as well as letting them know that they should check it out, notifying the user that it's on Netflix, and providing a link to the IMDB page for the movie.
+3. `MySQL Database Queries`
+    * Once a user answers the prompts, stock quantity is checked in the database - if sufficient, the order total will be calculated and console logged with a success message. 
 
-    ![Default Movie Output](screenshots/default-movie-output.png)
+    ![Next](https://github.com/jordanservos/Bamazon/blob/master/pics/Screen%20Shot%202020-03-04%20at%203.59.34%20PM.png)
+    
+    If there's isn't sufficient stock to fufill the order, an "Insufficient Quantatity" message is show to the user
+    
+    ![Next](https://github.com/jordanservos/Bamazon/blob/master/pics/Screen%20Shot%202020-03-04%20at%204.00.32%20PM.png)
+    
+### MySQL Database 
 
-    ![Example Movie Output](screenshots/example-movie-output.png)
+For the project, I created a MySQL Database called bamazon.I then created a Table inside of that database called products.
 
-4. `node liri.js do-what-it-says`
-    * Using the `fs` Node package, LIRI accesses the text in random.txt and uses that to call one of LIRI's commands for the user. It runs `spotify-this-song` for "I Want it That Way" by the Backstreet Boys, but can also be modified to search for a specific movie for movie-this, or a specific artist for concert-this.
 
-    ![Do What It Says Output](screenshots/do-what-it-says.png)
+The products table includes the following columns:
 
-5. `node liri.js`
-    * If no other user input is registered, the terminal returns the message `Please enter a valid search term, such as {concert-this}, {spotify-this-song}, {movie-this}, or {do-what-it-says}"`.
+* item_id (unique id for each product)
+* product_name (Name of product)
+* department_name
+* price (cost to customer)
+* stock_quantity (how much of the product is available in stores)
 
-    ![Default Output](screenshots/default-output.png)
+I then populated this database with 10 different products.
+
+![Next](https://github.com/jordanservos/Bamazon/blob/master/pics/Screen%20Shot%202020-03-04%20at%204.17.42%20PM.png)
+
+
+
+    
